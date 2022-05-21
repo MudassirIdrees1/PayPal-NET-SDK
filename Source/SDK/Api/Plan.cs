@@ -91,7 +91,7 @@ namespace PayPal.Api
             ArgumentValidator.Validate(planId, "planId");
 
             // Configure and send the request
-            var pattern = "v1/payments/billing-plans/{0}";
+            var pattern = "v1/billing/plans/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { planId });
             return PayPalResource.ConfigureAndExecute<Plan>(apiContext, HttpMethod.GET, resourcePath);
         }
@@ -118,7 +118,7 @@ namespace PayPal.Api
             ArgumentValidator.ValidateAndSetupAPIContext(apiContext);
 
             // Configure and send the request
-            var resourcePath = "v1/payments/billing-plans";
+            var resourcePath = "v1/billing/plans";
             return PayPalResource.ConfigureAndExecute<Plan>(apiContext, HttpMethod.POST, resourcePath, plan.ConvertToJson());
         }
 
@@ -146,7 +146,7 @@ namespace PayPal.Api
             ArgumentValidator.Validate(patchRequest, "patchRequest");
 
             // Configure and send the request
-            var pattern = "v1/payments/billing-plans/{0}";
+            var pattern = "v1/billing/plans/{0}";
             var resourcePath = SDKUtil.FormatURIPath(pattern, new object[] { planId });
             PayPalResource.ConfigureAndExecute(apiContext, HttpMethod.PATCH, resourcePath, patchRequest.ConvertToJson());
         }
@@ -172,7 +172,7 @@ namespace PayPal.Api
             queryParameters["total_required"] = totalRequired;
 
             // Configure and send the request
-            var resourcePath = "v1/payments/billing-plans" + queryParameters.ToUrlFormattedString();
+            var resourcePath = "v1/billing/plans" + queryParameters.ToUrlFormattedString();
             return PayPalResource.ConfigureAndExecute<PlanList>(apiContext, HttpMethod.GET, resourcePath);
         }
 
